@@ -3,15 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asystent Dotacji - Beauty & Pracodawcy</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Asystent Dotacji Beauty — Michael Kazara</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
   :root {
     --green: #1D9E75;
     --green-light: #E1F5EE;
     --green-mid: #9FE1CB;
     --green-dark: #0F6E56;
-    --amber: #EF9F27;
     --amber-light: #FAEEDA;
     --amber-dark: #854F0B;
     --blue-light: #E6F1FB;
@@ -22,8 +21,6 @@
     --gray-400: #888780;
     --gray-600: #5F5E5A;
     --gray-900: #1A1A18;
-    --red-light: #FCEBEB;
-    --red: #A32D2D;
     --radius: 12px;
     --radius-sm: 8px;
   }
@@ -42,34 +39,22 @@
   .sidebar {
     position: fixed;
     left: 0; top: 0; bottom: 0;
-    width: 260px;
+    width: 240px;
     background: #fff;
     border-right: 1px solid var(--gray-100);
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
     z-index: 10;
-  }
-
-  .brand {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .brand-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    margin-bottom: 8px;
   }
 
   .brand-name {
     font-family: 'DM Serif Display', serif;
-    font-size: 18px;
+    font-size: 17px;
     color: var(--gray-900);
     line-height: 1.2;
+    margin-bottom: 2px;
   }
 
   .brand-sub {
@@ -78,8 +63,6 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
   }
-
-  .nav-section { display: flex; flex-direction: column; gap: 4px; }
 
   .nav-label {
     font-size: 10px;
@@ -91,11 +74,13 @@
     padding-left: 10px;
   }
 
+  .nav-section { display: flex; flex-direction: column; gap: 3px; }
+
   .nav-btn {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 9px 10px;
+    padding: 8px 10px;
     border-radius: var(--radius-sm);
     border: none;
     background: transparent;
@@ -112,7 +97,7 @@
   .nav-btn.active { background: var(--green-light); color: var(--green-dark); font-weight: 500; }
 
   .nav-icon {
-    width: 28px; height: 28px;
+    width: 26px; height: 26px;
     border-radius: 6px;
     display: flex; align-items: center; justify-content: center;
     font-size: 13px;
@@ -122,62 +107,22 @@
 
   .nav-btn.active .nav-icon { background: var(--green-mid); }
 
-  .api-section { margin-top: auto; }
-
-  .api-input-wrap { position: relative; }
-
-  .api-label {
+  .sidebar-footer {
+    margin-top: auto;
     font-size: 11px;
     color: var(--gray-400);
-    margin-bottom: 6px;
-    display: block;
-  }
-
-  .api-input {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--gray-100);
+    line-height: 1.6;
+    padding: 10px;
     background: var(--gray-50);
-    font-size: 12px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--gray-900);
-    outline: none;
-  }
-
-  .api-input:focus { border-color: var(--green); }
-
-  .api-status {
-    font-size: 11px;
-    margin-top: 6px;
-    padding: 5px 8px;
-    border-radius: 6px;
-    display: none;
-  }
-
-  .api-status.ok { background: var(--green-light); color: var(--green-dark); display: block; }
-  .api-status.err { background: var(--red-light); color: var(--red); display: block; }
-
-  .save-api-btn {
-    width: 100%;
-    margin-top: 8px;
-    padding: 7px;
     border-radius: var(--radius-sm);
-    border: 1px solid var(--green);
-    background: var(--green-light);
-    color: var(--green-dark);
-    font-size: 12px;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    font-weight: 500;
   }
 
-  .save-api-btn:hover { background: var(--green-mid); }
+  .sidebar-footer a { color: var(--green-dark); text-decoration: none; }
 
   .main {
-    margin-left: 260px;
+    margin-left: 240px;
     padding: 2.5rem 2.5rem 4rem;
-    max-width: 900px;
+    max-width: 860px;
   }
 
   .page-header {
@@ -188,12 +133,15 @@
 
   .page-title {
     font-family: 'DM Serif Display', serif;
-    font-size: 28px;
+    font-size: 26px;
     color: var(--gray-900);
     margin-bottom: 4px;
   }
 
   .page-desc { font-size: 13px; color: var(--gray-400); }
+
+  .page-content { display: none; }
+  .page-content.active { display: block; }
 
   .section { margin-bottom: 2rem; }
 
@@ -208,27 +156,31 @@
 
   .quick-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     gap: 8px;
     margin-bottom: 1.5rem;
   }
 
   .quick-card {
-    padding: 12px 14px;
+    padding: 14px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--gray-100);
     background: #fff;
     cursor: pointer;
     transition: all 0.15s;
     text-align: left;
+    text-decoration: none;
+    display: block;
   }
 
   .quick-card:hover {
     border-color: var(--green);
     background: var(--green-light);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15,110,86,0.08);
   }
 
-  .quick-card-icon { font-size: 18px; margin-bottom: 6px; }
+  .quick-card-icon { font-size: 20px; margin-bottom: 8px; }
   .quick-card-title { font-size: 13px; font-weight: 500; color: var(--gray-900); }
   .quick-card-sub { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
 
@@ -240,7 +192,7 @@
 
   .search-input {
     flex: 1;
-    padding: 10px 14px;
+    padding: 11px 14px;
     border-radius: var(--radius-sm);
     border: 1px solid var(--gray-200);
     background: #fff;
@@ -252,9 +204,10 @@
   }
 
   .search-input:focus { border-color: var(--green); }
+  .search-input::placeholder { color: var(--gray-400); }
 
   .search-btn {
-    padding: 10px 20px;
+    padding: 11px 22px;
     border-radius: var(--radius-sm);
     border: none;
     background: var(--green);
@@ -268,341 +221,154 @@
   }
 
   .search-btn:hover { background: var(--green-dark); }
-  .search-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-  .result-area { min-height: 200px; }
-
-  .loading {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 3rem 0;
-    color: var(--gray-400);
-    font-size: 14px;
-  }
-
-  .spinner {
-    width: 20px; height: 20px;
-    border: 2px solid var(--gray-200);
-    border-top-color: var(--green);
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-  }
-
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  .result-card {
-    background: #fff;
-    border: 1px solid var(--gray-100);
-    border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
-    margin-bottom: 12px;
-    transition: border 0.15s;
-  }
-
-  .result-card:hover { border-color: var(--gray-200); }
-
-  .rc-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
-  }
-
-  .rc-title {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--gray-900);
-    line-height: 1.35;
-  }
-
-  .badge {
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    font-weight: 500;
-  }
-
-  .badge-green { background: var(--green-light); color: var(--green-dark); }
-  .badge-amber { background: var(--amber-light); color: var(--amber-dark); }
-  .badge-gray { background: var(--gray-100); color: var(--gray-600); }
-  .badge-blue { background: var(--blue-light); color: var(--blue); }
-
-  .rc-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    font-size: 12px;
-    color: var(--gray-400);
-    margin-bottom: 10px;
-  }
-
-  .rc-desc {
-    font-size: 13px;
-    color: var(--gray-600);
-    line-height: 1.65;
-    margin-bottom: 10px;
-  }
-
-  .rc-tip {
-    font-size: 13px;
-    color: var(--gray-900);
+  .info-box {
+    padding: 14px 16px;
     background: var(--green-light);
-    padding: 8px 12px;
     border-radius: var(--radius-sm);
     border-left: 3px solid var(--green);
-    margin-bottom: 12px;
-    line-height: 1.55;
-  }
-
-  .rc-actions { display: flex; flex-wrap: wrap; gap: 8px; }
-
-  .rc-action {
-    font-size: 12px;
-    padding: 6px 14px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--gray-200);
-    background: transparent;
-    color: var(--gray-600);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: all 0.15s;
-  }
-
-  .rc-action:hover { background: var(--gray-50); color: var(--gray-900); border-color: var(--gray-400); }
-  .rc-action.primary { border-color: var(--green); color: var(--green-dark); background: var(--green-light); }
-  .rc-action.primary:hover { background: var(--green-mid); }
-
-  .summary-bar {
     font-size: 13px;
-    color: var(--gray-400);
-    margin-bottom: 1rem;
-    padding: 10px 14px;
-    background: var(--gray-50);
+    color: var(--green-dark);
+    line-height: 1.6;
+  }
+
+  .info-box strong { font-weight: 500; }
+
+  .content-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  .ct-card {
+    padding: 12px 14px;
     border-radius: var(--radius-sm);
-    border-left: 3px solid var(--gray-200);
-  }
-
-  .sources-note {
-    font-size: 11px;
-    color: var(--gray-400);
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--gray-100);
-    line-height: 1.7;
-  }
-
-  .sources-note a { color: var(--green-dark); }
-
-  .empty {
-    text-align: center;
-    padding: 4rem 1rem;
-    color: var(--gray-400);
-    font-size: 14px;
-  }
-
-  .empty-icon { font-size: 36px; margin-bottom: 12px; }
-
-  .error-box {
-    padding: 12px 16px;
-    background: var(--red-light);
-    border-radius: var(--radius-sm);
-    color: var(--red);
-    font-size: 13px;
-    border-left: 3px solid var(--red);
-  }
-
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 100;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .modal-overlay.open { display: flex; }
-
-  .modal {
+    border: 1px solid var(--gray-100);
     background: #fff;
-    border-radius: var(--radius);
-    padding: 2rem;
-    width: 480px;
-    max-width: 90vw;
-  }
-
-  .modal-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-
-  .modal-desc { font-size: 13px; color: var(--gray-400); margin-bottom: 1.5rem; line-height: 1.6; }
-
-  .modal-input {
-    width: 100%;
-    padding: 10px 14px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--gray-200);
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    outline: none;
-    margin-bottom: 12px;
-  }
-
-  .modal-input:focus { border-color: var(--green); }
-
-  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
-
-  .modal-cancel {
-    padding: 8px 16px;
-    border: 1px solid var(--gray-200);
-    background: transparent;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
     cursor: pointer;
-    color: var(--gray-600);
+    transition: all 0.15s;
+    text-align: left;
   }
 
-  .modal-save {
-    padding: 8px 20px;
+  .ct-card.selected {
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+
+  .ct-card-icon { font-size: 18px; margin-bottom: 6px; }
+  .ct-card-title { font-size: 13px; font-weight: 500; color: var(--gray-900); }
+  .ct-card-sub { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+
+  .generate-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-sm);
     border: none;
     background: var(--green);
     color: #fff;
-    border-radius: var(--radius-sm);
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer;
-    font-weight: 500;
-  }
-
-  .modal-save:hover { background: var(--green-dark); }
-
-  .output-section { display: none; }
-  .output-section.visible { display: block; }
-
-  .output-box {
-    background: var(--gray-50);
-    border: 1px solid var(--gray-100);
-    border-radius: var(--radius-sm);
-    padding: 1.25rem;
     font-size: 14px;
-    line-height: 1.7;
-    color: var(--gray-900);
-    white-space: pre-wrap;
-    margin-bottom: 10px;
-  }
-
-  .copy-btn {
-    padding: 7px 16px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--gray-200);
-    background: #fff;
-    font-size: 12px;
+    font-weight: 500;
     font-family: 'DM Sans', sans-serif;
     cursor: pointer;
-    color: var(--gray-600);
+    transition: background 0.15s;
+    margin-top: 4px;
   }
 
-  .copy-btn:hover { background: var(--gray-50); }
-  .copy-btn.copied { background: var(--green-light); color: var(--green-dark); border-color: var(--green); }
+  .generate-btn:hover { background: var(--green-dark); }
 
-  @media (max-width: 768px) {
+  .note {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  @media (max-width: 700px) {
     .sidebar { display: none; }
-    .main { margin-left: 0; padding: 1.5rem; }
+    .main { margin-left: 0; padding: 1.5rem 1rem 3rem; }
   }
 </style>
 </head>
 <body>
 
 <div class="sidebar">
-  <div class="brand">
-    <div class="brand-dot"></div>
-    <div class="brand-name">Asystent<br>Dotacji</div>
-    <div class="brand-sub">Beauty & Pracodawcy</div>
+  <div>
+    <div class="brand-name">Asystent Dotacji</div>
+    <div class="brand-sub">Michael Kazara Academy</div>
   </div>
 
   <div class="nav-section">
-    <div class="nav-label">Kategorie</div>
-    <button class="nav-btn active" onclick="switchPage('search')">
-      <div class="nav-icon">🔍</div>
-      Wyszukaj nabory
+    <div class="nav-label">Nabory</div>
+    <button class="nav-btn active" onclick="showPage('search', this)">
+      <span class="nav-icon">🔍</span> Szukaj dotacji
     </button>
-    <button class="nav-btn" onclick="switchPage('beauty')">
-      <div class="nav-icon">💅</div>
-      Beauty & salony
+    <button class="nav-btn" onclick="showPage('beauty', this)">
+      <span class="nav-icon">💅</span> Beauty & salony
     </button>
-    <button class="nav-btn" onclick="switchPage('pracodawcy')">
-      <div class="nav-icon">👥</div>
-      Pracodawcy
+    <button class="nav-btn" onclick="showPage('pracodawcy', this)">
+      <span class="nav-icon">🏢</span> Pracodawcy
     </button>
-    <button class="nav-btn" onclick="switchPage('szkoly')">
-      <div class="nav-icon">🎓</div>
-      Szkoły i placówki
-    </button>
-    <button class="nav-btn" onclick="switchPage('content')">
-      <div class="nav-icon">📝</div>
-      Generuj posty / emaile
+    <button class="nav-btn" onclick="showPage('szkoly', this)">
+      <span class="nav-icon">🏫</span> Szkoły
     </button>
   </div>
 
-  <div class="api-section">
-    <span class="api-label">Klucz API Anthropic</span>
-    <div class="api-input-wrap">
-      <input class="api-input" type="password" id="apiKeyInput" placeholder="sk-ant-..." />
-    </div>
-    <button class="save-api-btn" onclick="saveApiKey()">Zapisz klucz</button>
-    <div class="api-status" id="apiStatus"></div>
+  <div class="nav-section">
+    <div class="nav-label">Narzędzia</div>
+    <button class="nav-btn" onclick="showPage('content', this)">
+      <span class="nav-icon">✍️</span> Generuj posty
+    </button>
+  </div>
+
+  <div class="sidebar-footer">
+    Otwiera Claude.ai z gotowym pytaniem.<br>
+    Wymagane konto <a href="https://claude.ai" target="_blank">claude.ai</a>
   </div>
 </div>
 
 <div class="main">
 
-  <!-- PAGE: SEARCH -->
-  <div id="page-search" class="page-content">
+  <!-- SEARCH -->
+  <div id="page-search" class="page-content active">
     <div class="page-header">
       <div class="page-title">Wyszukaj aktualne nabory</div>
-      <div class="page-desc">Przeszukuję PARP, BUR, KFS, FEL 2021-2027 w czasie rzeczywistym</div>
+      <div class="page-desc">Przeszukuje PARP, BUR, KFS, FEL 2021-2027 w czasie rzeczywistym</div>
     </div>
 
     <div class="section">
       <div class="section-label">Szybki dostęp</div>
       <div class="quick-grid">
-        <div class="quick-card" onclick="setAndSearch('Aktualne dotacje dla salonów beauty kosmetycznych fryzjerskich na sprzęt i inwestycje 2025 2026 Polska')">
-          <div class="quick-card-icon">💄</div>
-          <div class="quick-card-title">Salon - sprzęt</div>
+        <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne dotacje na zakup sprzętu kosmetycznego, laserowego i wyposażenia salonów beauty w Polsce (województwo lubelskie). Uwzględnij FENG, RPO, FEL 2021-2027. Kwiecień 2026. Podaj nazwy programów, kwoty, terminy i jak aplikować.'); return false;">
+          <div class="quick-card-icon">🔬</div>
+          <div class="quick-card-title">Salon – sprzęt</div>
           <div class="quick-card-sub">Laser, urządzenia, wyposażenie</div>
-        </div>
-        <div class="quick-card" onclick="setAndSearch('KFS Krajowy Fundusz Szkoleniowy 2025 2026 nabór pracodawca szkolenia pracowników jak złożyć wniosek')">
+        </a>
+        <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne nabory KFS (Krajowy Fundusz Szkoleniowy) 2026 dla pracodawców z branży beauty (fryzjer, kosmetolog, barber) w Lublinie. Jak złożyć wniosek przez PUP Lublin? Jakie kursy można sfinansować? Kwiecień 2026.'); return false;">
           <div class="quick-card-icon">📚</div>
-          <div class="quick-card-title">KFS - szkolenia</div>
+          <div class="quick-card-title">KFS – szkolenia</div>
           <div class="quick-card-sub">Dofinansowanie dla pracodawcy</div>
-        </div>
-        <div class="quick-card" onclick="setAndSearch('BUR baza usług rozwojowych dofinansowanie 2025 2026 lubelskie beauty fryzjer kosmetyczka')">
+        </a>
+        <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne programy BUR (Baza Usług Rozwojowych) i PSF Lubelskie 2026 dla firm beauty i pracodawców z województwa lubelskiego. Kwota dofinansowania, warunki, jak aplikować. Kwiecień 2026.'); return false;">
           <div class="quick-card-icon">📋</div>
           <div class="quick-card-title">BUR Lubelskie</div>
           <div class="quick-card-sub">Usługi rozwojowe, kursy</div>
-        </div>
-        <div class="quick-card" onclick="setAndSearch('FEL Fundusze Europejskie Lubelskie 2021-2027 nabory dla firm MŚP inwestycje 2025 2026')">
+        </a>
+        <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne nabory FEL 2021-2027 (Fundusze Europejskie dla Lubelskiego) dla MŚP z Lubelszczyzny. Inwestycje, cyfryzacja, szkolenia. Kwoty, terminy, jak aplikować. Kwiecień 2026.'); return false;">
           <div class="quick-card-icon">🇪🇺</div>
           <div class="quick-card-title">FEL dla firm</div>
           <div class="quick-card-sub">Lubelskie, inwestycje MŚP</div>
-        </div>
-        <div class="quick-card" onclick="setAndSearch('dotacje dla szkół placówek oświatowych 2025 2026 lubelskie sprzęt szkolenia nauczyciele')">
+        </a>
+        <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne dotacje dla szkół zawodowych i placówek oświatowych w województwie lubelskim. Sprzęt, szkolenia nauczycieli, staże uczniów. Kwiecień 2026.'); return false;">
           <div class="quick-card-icon">🏫</div>
           <div class="quick-card-title">Szkoły</div>
           <div class="quick-card-sub">Placówki oświatowe</div>
-        </div>
-        <div class="quick-card" onclick="setAndSearch('dotacja otwarcie działalności gospodarcze beauty salon kosmetyczny lubelskie 2025 2026 UP urząd pracy')">
+        </a>
+        <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne dotacje na otwarcie salonu kosmetycznego lub fryzjerskiego w Lublinie (WUP, PUP, FEL 2021-2027). Kwoty, warunki, kroki do złożenia wniosku. Kwiecień 2026.'); return false;">
           <div class="quick-card-icon">🚀</div>
           <div class="quick-card-title">Start działalności</div>
           <div class="quick-card-sub">Dotacja z UP na salon</div>
-        </div>
+        </a>
       </div>
     </div>
 
@@ -610,119 +376,116 @@
       <div class="section-label">Własne zapytanie</div>
       <div class="search-bar">
         <input class="search-input" id="searchInput" type="text" placeholder="np. dotacja na laser do salonu kosmetycznego Lublin..." onkeydown="if(event.key==='Enter') runSearch()" />
-        <button class="search-btn" id="searchBtn" onclick="runSearch()">Szukaj</button>
+        <button class="search-btn" onclick="runSearch()">Szukaj w Claude ↗</button>
       </div>
-      <div class="result-area" id="resultArea">
-        <div class="empty">
-          <div class="empty-icon">🔍</div>
-          Wybierz kategorię lub wpisz zapytanie
-        </div>
+      <div class="info-box">
+        Kliknięcie karty lub przycisku <strong>Szukaj w Claude</strong> otwiera Claude.ai z gotowym pytaniem — Claude przeszuka aktualne nabory i odpowie szczegółowo.
       </div>
     </div>
   </div>
 
-  <!-- PAGE: BEAUTY -->
-  <div id="page-beauty" class="page-content" style="display:none;">
+  <!-- BEAUTY -->
+  <div id="page-beauty" class="page-content">
     <div class="page-header">
       <div class="page-title">Beauty & salony</div>
       <div class="page-desc">Nabory dedykowane dla salonów, gabinetów, barberów, stylistów rzęs</div>
     </div>
     <div class="quick-grid">
-      <div class="quick-card" onclick="goSearchWith('Dotacje na sprzęt laserowy urządzenia kosmetyczne salony beauty 2025 2026')">
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne dotacje na zakup urządzeń laserowych, IPL, aparatury kosmetycznej dla salonu beauty w Polsce (Lubelskie). Kwiecień 2026. Podaj nazwy programów, kwoty, terminy.'); return false;">
         <div class="quick-card-icon">⚡</div>
         <div class="quick-card-title">Sprzęt i urządzenia</div>
         <div class="quick-card-sub">Laser, IPL, aparatura</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('Dotacja cyfryzacja marketing online salon beauty 2025 2026')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź dotacje na cyfryzację salonu beauty: marketing online, CRM, systemy rezerwacji. Polska, Lubelskie, kwiecień 2026.'); return false;">
         <div class="quick-card-icon">📱</div>
         <div class="quick-card-title">Cyfryzacja salonu</div>
         <div class="quick-card-sub">Marketing, CRM, booking</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('KFS szkolenie pracownik fryzjer kosmetyczka 2025 2026 pracodawca')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Jak jako właściciel salonu beauty złożyć wniosek KFS na szkolenie pracownika (fryzjer, kosmetyczka) przez PUP Lublin w 2026 roku? Krok po kroku, wymagane dokumenty, terminy.'); return false;">
         <div class="quick-card-icon">🎓</div>
         <div class="quick-card-title">Szkolenie pracownika</div>
         <div class="quick-card-sub">KFS dla salonu jako pracodawcy</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('remont adaptacja lokalu salon beauty dofinansowanie 2025')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź dotacje na remont lub adaptację lokalu pod salon kosmetyczny lub fryzjerski w Polsce. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">🏗️</div>
         <div class="quick-card-title">Adaptacja lokalu</div>
         <div class="quick-card-sub">Remont, wyposażenie wnętrz</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('ISO 9001 certyfikat BUR rejestracja szkolenia beauty 2025')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Jak uzyskać certyfikat ISO 9001 i zarejestrować się w BUR jako podmiot szkoleniowy dla branży beauty w Polsce? Kwiecień 2026. Koszty, kroki, czas realizacji.'); return false;">
         <div class="quick-card-icon">📜</div>
         <div class="quick-card-title">ISO + BUR</div>
         <div class="quick-card-sub">Certyfikacja dla akademii</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('ESG zrównoważony rozwój salon beauty dofinansowanie 2025 2026')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź dotacje na ekologiczne i zrównoważone rozwiązania dla salonów beauty (ESG, zielone inwestycje) w Polsce. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">🌿</div>
         <div class="quick-card-title">Ekologia w salonie</div>
         <div class="quick-card-sub">ESG, zielone inwestycje</div>
-      </div>
+      </a>
     </div>
   </div>
 
-  <!-- PAGE: PRACODAWCY -->
-  <div id="page-pracodawcy" class="page-content" style="display:none;">
+  <!-- PRACODAWCY -->
+  <div id="page-pracodawcy" class="page-content">
     <div class="page-header">
       <div class="page-title">Pracodawcy</div>
       <div class="page-desc">KFS, BUR i inne programy dla firm zatrudniających pracowników</div>
     </div>
     <div class="quick-grid">
-      <div class="quick-card" onclick="goSearchWith('KFS 2025 2026 priorytetowe grupy pracodawcy terminy naboru jak złożyć wniosek WUP PUP')">
+      <a class="quick-card" href="#" onclick="openClaude('Podaj aktualne terminy naborów KFS 2026, priorytety i jak krok po kroku złożyć wniosek przez WUP lub PUP dla pracodawcy z Lubelszczyzny. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">📅</div>
-        <div class="quick-card-title">KFS - terminy naborów</div>
+        <div class="quick-card-title">KFS – terminy naborów</div>
         <div class="quick-card-sub">Kiedy i jak składać</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('BUR dofinansowanie szkoleń dla pracowników lubelskie PSF 2025 2026 firma')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Jak skorzystać z dofinansowania szkoleń pracowników przez BUR i PSF Lubelskie w 2026? Warunki, kwoty, jak aplikować dla firmy z Lubelszczyzny. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">📊</div>
         <div class="quick-card-title">BUR dla firmy</div>
         <div class="quick-card-sub">Szkolenia z dofinansowaniem</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('PARP szkolenia dla firm dofinansowanie 2025 2026 Polska wschodnia')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne programy PARP i Polska Wschodnia dla firm szukających dofinansowania szkoleń i rozwoju pracowników. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">🏢</div>
-        <div class="quick-card-title">PARP - szkolenia firm</div>
+        <div class="quick-card-title">PARP – szkolenia firm</div>
         <div class="quick-card-sub">Polska Wschodnia</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('dotacje na zatrudnienie nowych pracowników staż lubelskie urząd pracy 2025')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Jakie dofinansowania na zatrudnienie nowych pracowników i staże są dostępne dla firm z Lubelszczyzny w 2026? PUP, WUP, refundacje. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">👤</div>
         <div class="quick-card-title">Nowe zatrudnienie</div>
         <div class="quick-card-sub">Staże, refundacje z UP</div>
-      </div>
+      </a>
     </div>
   </div>
 
-  <!-- PAGE: SZKOLY -->
-  <div id="page-szkoly" class="page-content" style="display:none;">
+  <!-- SZKOLY -->
+  <div id="page-szkoly" class="page-content">
     <div class="page-header">
       <div class="page-title">Szkoły i placówki</div>
       <div class="page-desc">Dofinansowania dla szkół średnich, zawodowych, centrów kształcenia</div>
     </div>
     <div class="quick-grid">
-      <div class="quick-card" onclick="goSearchWith('dotacje dla szkół zawodowych lubelskie 2025 2026 sprzęt pracownie wyposażenie')">
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne dotacje dla szkół zawodowych na wyposażenie pracowni i zakup sprzętu w województwie lubelskim. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">🔧</div>
         <div class="quick-card-title">Wyposażenie pracowni</div>
         <div class="quick-card-sub">Sprzęt, narzędzia zawodowe</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('staże praktyki uczniów dofinansowanie szkoła zawodowa lubelskie 2025')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Jakie programy dofinansowują staże i praktyki uczniów szkół zawodowych w 2026? Erasmus+, programy krajowe, Lubelskie. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">🤝</div>
         <div class="quick-card-title">Staże uczniów</div>
         <div class="quick-card-sub">Praktyki, Erasmus+</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('szkolenia doskonalenie nauczycieli dofinansowanie lubelskie 2025 2026')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Znajdź aktualne dofinansowania na szkolenia i doskonalenie zawodowe nauczycieli szkół zawodowych w województwie lubelskim. Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">👩‍🏫</div>
         <div class="quick-card-title">Szkolenia nauczycieli</div>
         <div class="quick-card-sub">Doskonalenie kadry</div>
-      </div>
-      <div class="quick-card" onclick="goSearchWith('cyfryzacja szkoły sprzęt komputerowy dofinansowanie 2025 2026 lubelskie')">
+      </a>
+      <a class="quick-card" href="#" onclick="openClaude('Jakie dotacje są dostępne na cyfryzację szkoły, zakup sprzętu komputerowego i oprogramowania w Polsce w 2026? Kwiecień 2026.'); return false;">
         <div class="quick-card-icon">💻</div>
         <div class="quick-card-title">Cyfryzacja szkoły</div>
         <div class="quick-card-sub">Komputery, oprogramowanie</div>
-      </div>
+      </a>
     </div>
   </div>
 
-  <!-- PAGE: CONTENT -->
-  <div id="page-content" class="page-content" style="display:none;">
+  <!-- CONTENT -->
+  <div id="page-content" class="page-content">
     <div class="page-header">
       <div class="page-title">Generuj posty i emaile</div>
       <div class="page-desc">Gotowe treści do wklejenia na Facebook lub wysłania do klientów</div>
@@ -732,310 +495,77 @@
       <div class="section-label">Temat dotacji lub naboru</div>
       <div class="search-bar">
         <input class="search-input" id="contentInput" type="text" placeholder="np. KFS szkolenia dla pracodawców, FEL dla salonów beauty..." />
-        <button class="search-btn" onclick="generateContent()">Generuj</button>
       </div>
     </div>
 
     <div class="section">
       <div class="section-label">Co chcesz wygenerować?</div>
-      <div class="quick-grid" style="grid-template-columns: repeat(3, 1fr);">
-        <div class="quick-card" id="ct-fb" onclick="toggleContentType('fb')" style="border-color: var(--green); background: var(--green-light);">
-          <div class="quick-card-icon">📘</div>
-          <div class="quick-card-title">Post na Facebook</div>
-          <div class="quick-card-sub">Grupy branżowe</div>
+      <div class="content-type-grid">
+        <div class="ct-card selected" id="ct-fb" onclick="selectType('fb')">
+          <div class="ct-card-icon">📘</div>
+          <div class="ct-card-title">Post na Facebook</div>
+          <div class="ct-card-sub">Grupy branżowe</div>
         </div>
-        <div class="quick-card" id="ct-email" onclick="toggleContentType('email')">
-          <div class="quick-card-icon">📧</div>
-          <div class="quick-card-title">Email do klientki</div>
-          <div class="quick-card-sub">Właścicielka salonu</div>
+        <div class="ct-card" id="ct-email" onclick="selectType('email')">
+          <div class="ct-card-icon">📧</div>
+          <div class="ct-card-title">Email do klientki</div>
+          <div class="ct-card-sub">Właścicielka salonu</div>
         </div>
-        <div class="quick-card" id="ct-dm" onclick="toggleContentType('dm')">
-          <div class="quick-card-icon">💬</div>
-          <div class="quick-card-title">Wiadomość prywatna</div>
-          <div class="quick-card-sub">DM na Facebooku</div>
+        <div class="ct-card" id="ct-dm" onclick="selectType('dm')">
+          <div class="ct-card-icon">💬</div>
+          <div class="ct-card-title">Wiadomość prywatna</div>
+          <div class="ct-card-sub">DM na Facebooku</div>
         </div>
       </div>
-    </div>
-
-    <div class="output-section" id="outputSection">
-      <div class="section-label">Wygenerowany tekst</div>
-      <div class="output-box" id="outputBox"></div>
-      <button class="copy-btn" id="copyBtn" onclick="copyOutput()">Kopiuj tekst</button>
-    </div>
-
-    <div class="result-area" id="contentResultArea"></div>
-  </div>
-
-</div>
-
-<!-- MODAL: API Key -->
-<div class="modal-overlay" id="apiModal">
-  <div class="modal">
-    <div class="modal-title">Klucz API Anthropic</div>
-    <div class="modal-desc">Wpisz swój klucz API — zostanie dodany do adresu URL strony. Skopiuj ten adres i zapisz w Notion jako zakładkę, żeby nie wpisywać klucza ponownie.</div>
-    <input class="modal-input" type="password" id="modalApiInput" placeholder="sk-ant-api03-..." />
-    <div class="modal-actions">
-      <button class="modal-cancel" onclick="closeModal()">Anuluj</button>
-      <button class="modal-save" onclick="saveFromModal()">Zapisz i kontynuuj</button>
+      <button class="generate-btn" onclick="generateContent()">Generuj w Claude ↗</button>
+      <div class="note">Otworzy Claude.ai z gotowym promptem — skopiuj wynik i wklej gdzie potrzebujesz</div>
     </div>
   </div>
+
 </div>
 
 <script>
-  // Klucz API czytany z parametru URL: ?key=sk-ant-...
-  // Notion nie obsługuje localStorage — klucz wbudowany w URL nie ginie przy odświeżeniu.
-  const urlParams = new URLSearchParams(window.location.search);
-  let apiKey = urlParams.get('key') || '';
-  let currentContentType = 'fb';
-  let pendingSearch = '';
+  let currentType = 'fb';
 
-  if (apiKey && apiKey.startsWith('sk-')) {
-    document.getElementById('apiKeyInput').value = '••••••••••••' + apiKey.slice(-6);
-    document.getElementById('apiStatus').textContent = 'Klucz aktywny (z URL)';
-    document.getElementById('apiStatus').className = 'api-status ok';
-    // Jeśli był pending search przed redirectem — odpal go
-    const qParam = urlParams.get('q');
-    if (qParam) {
-      document.getElementById('searchInput').value = qParam;
-      setTimeout(() => runSearch(), 300);
-    }
-  }
-
-  function saveApiKey() {
-    // W trybie URL-key pole w sidebarze jest tylko do odczytu
-    document.getElementById('apiStatus').textContent = 'Klucz pochodzi z URL — edytuj adres strony';
-    document.getElementById('apiStatus').className = 'api-status err';
-  }
-
-  function saveFromModal() {
-    const val = document.getElementById('modalApiInput').value.trim();
-    if (!val || !val.startsWith('sk-')) return;
-    // Przekieruj na tę samą stronę z kluczem w URL
-    const search = pendingSearch ? '&q=' + encodeURIComponent(pendingSearch) : '';
-    const newUrl = window.location.pathname + '?key=' + encodeURIComponent(val) + search;
-    window.location.replace(newUrl);
-  }
-
-  function closeModal() {
-    document.getElementById('apiModal').classList.remove('open');
-  }
-
-  function checkApiKey() {
-    if (!apiKey || !apiKey.startsWith('sk-')) {
-      document.getElementById('apiModal').classList.add('open');
-      document.getElementById('modalApiInput').focus();
-      return false;
-    }
-    return true;
-  }
-
-  function switchPage(name) {
-    document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
-    document.getElementById('page-' + name).style.display = 'block';
+  function showPage(name, btn) {
+    document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    event.currentTarget.classList.add('active');
+    if (btn) btn.classList.add('active');
   }
 
-  function setAndSearch(query) {
-    document.getElementById('searchInput').value = query;
-    runSearch();
+  function openClaude(prompt) {
+    const full = prompt + '\n\nOdpowiedz po polsku, konkretnie. Jestem ekspertem ds. edukacji i dotacji z Lublina (branża beauty, szkoły zawodowe).';
+    window.open('https://claude.ai/new?q=' + encodeURIComponent(full), '_blank');
   }
 
-  function goSearchWith(query) {
-    switchPageByName('search');
-    document.getElementById('searchInput').value = query;
-    runSearch();
+  function runSearch() {
+    const q = document.getElementById('searchInput').value.trim();
+    if (!q) return;
+    const prompt = 'Znajdź aktualne nabory dotacyjne dla: "' + q + '". Uwzględnij PARP, BUR, KFS, FEL 2021-2027, Polska Wschodnia. Priorytet: branża beauty, pracodawcy, województwo lubelskie. Kwiecień 2026. Podaj: nazwa programu, kwota, termin, jak aplikować.';
+    openClaude(prompt);
   }
 
-  function switchPageByName(name) {
-    document.querySelectorAll('.page-content').forEach(p => p.style.display = 'none');
-    document.getElementById('page-' + name).style.display = 'block';
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.nav-btn')[0].classList.add('active');
-  }
-
-  function toggleContentType(type) {
-    currentContentType = type;
+  function selectType(type) {
+    currentType = type;
     ['fb', 'email', 'dm'].forEach(t => {
-      const el = document.getElementById('ct-' + t);
-      if (t === type) {
-        el.style.borderColor = 'var(--green)';
-        el.style.background = 'var(--green-light)';
-      } else {
-        el.style.borderColor = 'var(--gray-100)';
-        el.style.background = '#fff';
-      }
+      document.getElementById('ct-' + t).classList.toggle('selected', t === type);
     });
   }
 
-  function statusBadge(status) {
-    if (status === 'aktywny') return '<span class="badge badge-green">aktywny</span>';
-    if (status === 'nadchodzący') return '<span class="badge badge-amber">nadchodzący</span>';
-    if (status === 'zakończony') return '<span class="badge badge-gray">zakończony</span>';
-    return `<span class="badge badge-blue">${status}</span>`;
-  }
-
-  function renderResults(data, areaId) {
-    const area = document.getElementById(areaId || 'resultArea');
-    let html = '';
-
-    if (data.summary) {
-      html += `<div class="summary-bar">${data.summary}</div>`;
-    }
-
-    data.results.forEach(r => {
-      const title = (r.title || '').replace(/'/g, "\\'");
-      html += `
-      <div class="result-card">
-        <div class="rc-top">
-          <div class="rc-title">${r.title || 'Program dotacyjny'}</div>
-          ${statusBadge(r.status || 'aktywny')}
-        </div>
-        <div class="rc-meta">
-          <span>Dla: ${r.target || '-'}</span>
-          <span>Kwota: ${r.amount || '-'}</span>
-          <span>Termin: ${r.deadline || 'brak danych'}</span>
-          <span>Źródło: ${r.source || '-'}</span>
-        </div>
-        <div class="rc-desc">${r.description || ''}</div>
-        ${r.tip ? `<div class="rc-tip">Wskazówka: ${r.tip}</div>` : ''}
-        <div class="rc-actions">
-          <button class="rc-action primary" onclick="askMore('${title}')">Więcej szczegółów</button>
-          <button class="rc-action" onclick="makePost('${title}')">Post na FB</button>
-          <button class="rc-action" onclick="makeEmail('${title}')">Email do klientki</button>
-        </div>
-      </div>`;
-    });
-
-    html += `<div class="sources-note">Wyniki generowane przez AI z przeszukiwaniem sieci. Zawsze weryfikuj aktualne terminy na:<br>
-      <a href="https://parp.gov.pl" target="_blank">parp.gov.pl</a> &nbsp;|&nbsp;
-      <a href="https://uslugirozwojowe.parp.gov.pl" target="_blank">uslugirozwojowe.parp.gov.pl</a> &nbsp;|&nbsp;
-      <a href="https://funduszeeuropejskie.gov.pl" target="_blank">funduszeeuropejskie.gov.pl</a> &nbsp;|&nbsp;
-      <a href="https://praca.gov.pl" target="_blank">praca.gov.pl</a>
-    </div>`;
-
-    area.innerHTML = html;
-  }
-
-  async function callApi(systemPrompt, userMsg) {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-        system: systemPrompt,
-        messages: [{ role: 'user', content: userMsg }]
-      })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error.message || 'API error');
-    return data.content.filter(b => b.type === 'text').map(b => b.text).join('');
-  }
-
-  async function runSearch() {
-    const input = document.getElementById('searchInput').value.trim();
-    if (!input) return;
-    if (!checkApiKey()) { pendingSearch = input; return; }
-
-    const area = document.getElementById('resultArea');
-    const btn = document.getElementById('searchBtn');
-    area.innerHTML = '<div class="loading"><div class="spinner"></div>Przeszukuję aktualne nabory...</div>';
-    btn.disabled = true;
-
-    const system = `Jesteś ekspertem od dotacji unijnych i krajowych dla polskich firm ze szczególnym uwzględnieniem branży beauty (salony fryzjerskie, kosmetyczne, barberzy, stylistki rzęs) i pracodawców z województwa lubelskiego. Odpowiadasz TYLKO w czystym JSON bez markdown, bez komentarzy.
-
-Format:
-{"results":[{"title":"...","status":"aktywny|nadchodzący|zakończony","target":"...","amount":"...","deadline":"...","source":"...","description":"...","tip":"..."}],"summary":"..."}
-
-Podaj 2-5 wyników. Skup się na realnych programach. Nie wymyślaj.`;
-
-    const user = `Znajdź aktualne lub nadchodzące nabory dotacyjne dla: "${input}". Uwzględnij: PARP, BUR, KFS, FEL 2021-2027, Polska Wschodnia. Priorytet: branża beauty, pracodawcy, województwo lubelskie. Dzisiaj jest kwiecień 2026.`;
-
-    try {
-      const text = await callApi(system, user);
-      const match = text.match(/\{[\s\S]*\}/);
-      const parsed = match ? JSON.parse(match[0]) : null;
-      if (!parsed || !parsed.results || !parsed.results.length) {
-        area.innerHTML = '<div class="error-box">Nie znaleziono wyników. Spróbuj bardziej szczegółowego zapytania.</div>';
-      } else {
-        renderResults(parsed, 'resultArea');
-      }
-    } catch(e) {
-      area.innerHTML = `<div class="error-box">Błąd: ${e.message}. Sprawdź klucz API i połączenie internetowe.</div>`;
-    }
-
-    btn.disabled = false;
-  }
-
-  async function askMore(title) {
-    goSearchWith(`Szczegółowe informacje o programie: ${title}. Krok po kroku jak złożyć wniosek dla salonu beauty lub pracodawcy w Lublinie. Wymagania, dokumenty, terminy.`);
-  }
-
-  async function makePost(title) {
-    switchPageByName('content');
-    document.getElementById('contentInput').value = title;
-    currentContentType = 'fb';
-    toggleContentType('fb');
-    generateContent();
-  }
-
-  async function makeEmail(title) {
-    switchPageByName('content');
-    document.getElementById('contentInput').value = title;
-    currentContentType = 'email';
-    toggleContentType('email');
-    generateContent();
-  }
-
-  async function generateContent() {
+  function generateContent() {
     const topic = document.getElementById('contentInput').value.trim();
-    if (!topic) return;
-    if (!checkApiKey()) return;
-
-    const area = document.getElementById('contentResultArea');
-    const outputSection = document.getElementById('outputSection');
-    outputSection.classList.remove('visible');
-    area.innerHTML = '<div class="loading"><div class="spinner"></div>Generuję tekst...</div>';
+    if (!topic) { alert('Wpisz temat dotacji'); return; }
 
     const typeMap = {
-      fb: 'post na grupie Facebook dla właścicielek salonów beauty. Bez AI-owego języka, naturalny, konkretny, max 200 słów, 3-5 hashtagów na końcu.',
-      email: 'krótki email do właścicielki salonu beauty. Temat w subject. Bez korporacyjnego języka, naturalny, bezpośredni, max 150 słów.',
+      fb: 'post na grupie Facebook dla właścicielek salonów beauty. Naturalny, konkretny, max 200 słów, 3-5 hashtagów na końcu. Bez AI-owego języka.',
+      email: 'krótki email do właścicielki salonu beauty. Pierwsza linia to "Temat: ...". Naturalny, bezpośredni, max 150 słów.',
       dm: 'krótką wiadomość prywatną na Facebooku do właścicielki salonu. Max 80 słów, casual, jak od znajomego z branży.'
     };
 
-    const system = `Jesteś copywriterem piszącym dla Michała Koziarskiego - eksperta branży beauty i doradcy ds. dotacji z Lublina. Piszesz po polsku, naturalnie, bez AI-owego języka. Bez słów: kluczowy, kompleksowy, dedykowany, pasja, misja. Bez wydłużonych myślników. Krótkie zdania.`;
-
-    const user = `Napisz ${typeMap[currentContentType]} na temat: "${topic}". Napisz go z perspektywy lokalnego eksperta z Lublina który pomaga salonom beauty pozyskiwać dotacje. Odpowiedz samym tekstem do wklejenia, bez żadnych komentarzy przed ani po.`;
-
-    try {
-      const text = await callApi(system, user);
-      area.innerHTML = '';
-      document.getElementById('outputBox').textContent = text.trim();
-      outputSection.classList.add('visible');
-    } catch(e) {
-      area.innerHTML = `<div class="error-box">Błąd: ${e.message}</div>`;
-    }
-  }
-
-  function copyOutput() {
-    const text = document.getElementById('outputBox').textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.getElementById('copyBtn');
-      btn.textContent = 'Skopiowano!';
-      btn.classList.add('copied');
-      setTimeout(() => {
-        btn.textContent = 'Kopiuj tekst';
-        btn.classList.remove('copied');
-      }, 2000);
-    });
+    const prompt = 'Napisz ' + typeMap[currentType] + ' na temat: "' + topic + '". Piszesz z perspektywy eksperta ds. dotacji z Lublina który pomaga salonom beauty. Odpowiedz samym tekstem do wklejenia, bez komentarzy.';
+    openClaude(prompt);
   }
 </script>
-
 </body>
 </html>
