@@ -772,7 +772,7 @@
 <div class="modal-overlay" id="apiModal">
   <div class="modal">
     <div class="modal-title">Klucz API Anthropic</div>
-    <div class="modal-desc">Wpisz swój klucz API żeby asystent mógł przeszukiwać aktualne nabory. Klucz jest zapisywany tylko lokalnie w przeglądarce - nigdzie nie wysyłany.</div>
+    <div class="modal-desc">Wpisz swój klucz API — zostanie dodany do adresu URL strony. Skopiuj ten adres i zapisz w Notion jako zakładkę, żeby nie wpisywać klucza ponownie.</div>
     <input class="modal-input" type="password" id="modalApiInput" placeholder="sk-ant-api03-..." />
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeModal()">Anuluj</button>
@@ -782,43 +782,38 @@
 </div>
 
 <script>
-  let apiKey = localStorage.getItem('anthropic_api_key') || '';
+  // Klucz API czytany z parametru URL: ?key=sk-ant-...
+  // Notion nie obsługuje localStorage — klucz wbudowany w URL nie ginie przy odświeżeniu.
+  const urlParams = new URLSearchParams(window.location.search);
+  let apiKey = urlParams.get('key') || '';
   let currentContentType = 'fb';
   let pendingSearch = '';
 
-  if (apiKey) {
-    document.getElementById('apiKeyInput').value = apiKey;
-    document.getElementById('apiStatus').textContent = 'Klucz zapisany';
+  if (apiKey && apiKey.startsWith('sk-')) {
+    document.getElementById('apiKeyInput').value = '••••••••••••' + apiKey.slice(-6);
+    document.getElementById('apiStatus').textContent = 'Klucz aktywny (z URL)';
     document.getElementById('apiStatus').className = 'api-status ok';
+    // Jeśli był pending search przed redirectem — odpal go
+    const qParam = urlParams.get('q');
+    if (qParam) {
+      document.getElementById('searchInput').value = qParam;
+      setTimeout(() => runSearch(), 300);
+    }
   }
 
   function saveApiKey() {
-    const val = document.getElementById('apiKeyInput').value.trim();
-    if (!val || !val.startsWith('sk-')) {
-      document.getElementById('apiStatus').textContent = 'Nieprawidłowy format klucza';
-      document.getElementById('apiStatus').className = 'api-status err';
-      return;
-    }
-    apiKey = val;
-    localStorage.setItem('anthropic_api_key', val);
-    document.getElementById('apiStatus').textContent = 'Klucz zapisany';
-    document.getElementById('apiStatus').className = 'api-status ok';
+    // W trybie URL-key pole w sidebarze jest tylko do odczytu
+    document.getElementById('apiStatus').textContent = 'Klucz pochodzi z URL — edytuj adres strony';
+    document.getElementById('apiStatus').className = 'api-status err';
   }
 
   function saveFromModal() {
     const val = document.getElementById('modalApiInput').value.trim();
     if (!val || !val.startsWith('sk-')) return;
-    apiKey = val;
-    localStorage.setItem('anthropic_api_key', val);
-    document.getElementById('apiKeyInput').value = val;
-    document.getElementById('apiStatus').textContent = 'Klucz zapisany';
-    document.getElementById('apiStatus').className = 'api-status ok';
-    closeModal();
-    if (pendingSearch) {
-      document.getElementById('searchInput').value = pendingSearch;
-      pendingSearch = '';
-      runSearch();
-    }
+    // Przekieruj na tę samą stronę z kluczem w URL
+    const search = pendingSearch ? '&q=' + encodeURIComponent(pendingSearch) : '';
+    const newUrl = window.location.pathname + '?key=' + encodeURIComponent(val) + search;
+    window.location.replace(newUrl);
   }
 
   function closeModal() {
